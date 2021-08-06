@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Future Is DAO</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffffff">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="preload" href="/webfonts/fa-solid-900.woff2" as="font" crossorigin>
+    </head>
+    <body>
+        <div class="header">
+            <img src="images/header.jpg" />
+        </div>
+        <div class="main">
+            <img class="comic" />
+        </div>
+        <div class="controls">
+            <a onclick="updatePage(function() { return 1 })">
+                <i class="fas fa-step-backward"></i>
+            </a>
+            <a onclick="updatePage(function() { return this.id - 1 })">
+                <i class="fas fa-fast-backward"></i>
+            </a>
+            <a onclick="updatePage(randomId)">
+                <i class="fas fa-random"></i>
+            </a>
+            <a onclick="updatePage(function() { return this.id + 1 })">
+                <i class="fas fa-fast-forward"></i>
+            </a>
+            <a onclick="updatePage(function() { return this.latest })">
+                <i class="fas fa-step-forward"></i>
+            </a>
+            <a onclick="toggleExpand()">
+                <i class="fas fa-expand-alt"></i>
+            </a>
+            <a href="https://rarible.com/perchy" title="See my NFTs on Rarible">
+                <img src="images/rarible.png" />
+            </a>
+        </div>
+        <script>
+            var latest = 29;
+            var id = parseInt(window.location.pathname.replace("/", ""), 10);
+            updatePage();
+
+            function randomId() {
+                let newId = Math.floor(Math.random() * (latest - 1)) + 1;
+
+                if (newId >= id) {
+                    newId++;
+                }
+
+                return newId;
+            }
+            
+            function toggleExpand() {
+                document.getElementsByTagName("body")[0].classList.toggle("expanded");
+            }
+
+            function updatePage(newId) {
+                id = (newId && newId()) || id;
+
+                if (isNaN(id) || id > latest) {
+                    id = latest;
+                }
+
+                if (id < 1) {
+                    id = 1;
+                }
+
+                newId ? history.pushState(id, getTitle(id), "/" + id) : history.replaceState(id, getTitle(id), "/" + id);
+                document.getElementsByTagName("title")[0].text = getTitle(id);
+                document.getElementsByClassName("comic")[0].src = "https://ik.imagekit.io/thefutureisdao/comics/" + id + "." + (id > 25 ? "png" : "jpg");
+            }
+
+            function getTitle() {
+                return id + " - The Future Is DAO";
+            }
+
+            window.onpopstate = function(event) {
+                id = event.state;
+                updatePage();
+            }
+        </script>
+    </body>
+</html>
