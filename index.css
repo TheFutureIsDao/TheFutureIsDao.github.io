@@ -1,0 +1,126 @@
+html {
+    min-width: 320px;
+}
+
+body {
+    text-align: center;
+    background-color: black;
+}
+
+.comic {
+    max-width: 75%;
+    border-radius: 10px;
+    height: auto;
+}
+
+.expanded .comic {
+    max-width: 100%;
+    border-radius: 0px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .comic {
+        max-width: 45%;
+    }
+}
+
+.header {
+    text-align: left;
+}
+
+.header img {
+    height: 100px;
+    width: 140px;
+}
+
+.expanded .header img {
+    display: none;
+}
+
+a {
+    color: #fff;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+a.greyed {
+    color: #555;
+    cursor: not-allowed;
+}
+
+a:last-child {
+    margin-right: 15px;
+}
+
+a:last-child img {
+    height: 32px;
+    width: 32px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #333a;
+}
+
+.main {
+    margin-bottom: 70px;
+}
+
+.expanded .main {
+    margin-bottom: 50px;
+}
+
+.fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 2em;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Font Awesome 5 Free";
+    src: url(../webfonts/fa-solid-900.eot);
+    src: url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(../webfonts/fa-solid-900.woff2) format("woff2"),url(../webfonts/fa-solid-900.woff) format("woff"),url(../webfonts/fa-solid-900.ttf) format("truetype"),url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")
+}
+
+.fa-expand-alt:before {
+    content: "\f424";
+}
+
+.expanded .fa-expand-alt:before {
+    content: "\f422";
+}
+
+.fa-fast-backward:before {
+    content: "\f049";
+}
+
+.fa-step-backward:before {
+    content: "\f048";
+}
+
+.fa-random:before {
+    content: "\f074";
+}
+
+.fa-step-forward:before {
+    content: "\f051";
+}
+
+.fa-fast-forward:before {
+    content: "\f050";
+}
