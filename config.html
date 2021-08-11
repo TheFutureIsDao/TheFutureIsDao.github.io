@@ -1,5 +1,0 @@
-{% for file in site.static_files %}
-  {% if file.extname == ".jpg" -%}
-     * [{{ file.path }}]({{ site.baseurl }}{{ file.path }})
-  {%- endif %}
-{% endfor %}
