@@ -75,7 +75,7 @@
 
                 newId ? history.pushState(id, getTitle(id), "/" + id) : history.replaceState(id, getTitle(id), "/" + id);
                 document.getElementsByTagName("title")[0].text = getTitle(id);
-                document.getElementsByClassName("comic")[0].src = "https://ik.imagekit.io/thefutureisdao/comics/" + id + "." + (id > 25 ? "png" : "jpg");
+                document.getElementsByClassName("comic")[0].src = "comics/" + id + "." + (id > 25 ? "png" : "jpg");
             }
 
             function getTitle() {
